@@ -12,7 +12,6 @@ class PaymentMethodRepository implements PaymentMethodRepositoryInterface
         return PaymentMethod::get();
     }
 
-
     public function getByID(int $id)
     {
         return PaymentMethod::find($id);

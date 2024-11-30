@@ -16,11 +16,8 @@ class ShowController extends Controller
         $this->getByIDUseCase = $getByIDUseCase;
     }
 
-
-
     public function __invoke(int $id)
     {
         return $this->getByIDUseCase->handle($id);
-
     }
 }

@@ -11,4 +11,9 @@ class PaymentMethodOptionRepository implements PaymentMethodOptionRepositoryInte
     {
         return PaymentMethodOption::where('payment_method_id', $id)->get();
     }
+
+    public function getByPaymentMethodIDCount(int $id)
+    {
+        return PaymentMethodOption::where('payment_method_id', $id)->count();
+    }
 }

@@ -25,13 +25,14 @@ class GetByIDUseCase implements GetByIDUseCaseInterface
     public function handle(int $id)
     {
         $paymentMethod = $this->paymentMethodRepository->getByID($id);
-        $paymentMethodOptionsCount = $this->paymentMethodOptionRepository->getByPaymentMethodID($id)->count();
+        $paymentMethodOptionsCount = $this->paymentMethodOptionRepository->getByPaymentMethodIDCount($id);
 
         $paymentMethodData = new stdClass();
         $paymentMethodData->id = $paymentMethod->id;
         $paymentMethodData->name = $paymentMethod->name;
         $paymentMethodData->created_at = $paymentMethod->created_at;
         $paymentMethodData->options_count = $paymentMethodOptionsCount;
+        $paymentMethodData->options = $this->paymentMethodRepository->getByID($id)->paymentMethodOptions;
 
         return new PaymentMethodResource($paymentMethodData);
     }

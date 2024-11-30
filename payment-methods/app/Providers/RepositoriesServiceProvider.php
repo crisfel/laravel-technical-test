@@ -18,6 +18,7 @@ class RepositoriesServiceProvider extends ServiceProvider
         PaymentMethodRepositoryInterface::class => PaymentMethodRepository::class,
         PaymentMethodOptionRepositoryInterface::class => PaymentMethodOptionRepository::class,
     ];
+
     public function register(): void
     {
         foreach ($this->classes as $interface => $implementation) {
